@@ -1,4 +1,4 @@
-const getRate = () => $.get(`/rateData?type=${$('#type').val()}&weight=${$('#weight').val()}`,
+const getRate = () => $.get(`/9/rateData?type=${$('#type').val()}&weight=${$('#weight').val()}`,
                             (data) => $('#rate').val(`$${Number(data.rate).toFixed(2)}`))
 
 $(() => {

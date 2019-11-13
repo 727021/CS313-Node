@@ -1,5 +1,6 @@
 var express = require('express');
 var url = require('url')
+var fs = require('fs')
 var router = express.Router();
 
 const mailTypes = ['Letters (Stamped)','Letters (Metered)','Large Envelopes (Flats)','First-Class Package Service-Retail']
@@ -43,9 +44,20 @@ function calculateRate(weight, type) {
     return 0
 }
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res) => {
+    res.render('9/form', {title: 'Prove 09', brand: 'Prove 09'})
+})
+
+router.get('/getRate', function(req, res, next) {
     q = url.parse(req.url, true).query
-  res.render('getRate', {type: mailTypes[Number(q.type)], weight: q.weight, rate: calculateRate(q.weight, q.type).toFixed(2)})
+  res.render('9/getRate', {type: mailTypes[Number(q.type)], weight: q.weight, rate: calculateRate(q.weight, q.type).toFixed(2), title: 'Prove 09', brand: 'Prove 09'})
 });
+
+router.get('/rateData', function(req, res, next) {
+    q = url.parse(req.url, true).query
+    res.writeHead(200, {'Content-Type':'application/json'})
+    res.end(JSON.stringify({rate: calculateRate(q.weight, q.type)}))
+});
+
 
 module.exports = router;
