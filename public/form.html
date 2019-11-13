@@ -9,10 +9,10 @@
     <title>Postal Rate Calculator</title>
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-center">
             <span class="navbar-brand">Postal Rate Calculator</span>
-        </nav>
+    </nav>
+    <div class="container">
         <form action="/getRate" method="GET" class="container mt-2">
             <div class="row form-group">
                 <div class="col-3 text-right"><label for="weight">Weight (oz):</label></div>
@@ -30,11 +30,17 @@
                 </div>
             </div>
             <div class="row form-group">
+                <div class="col-3 text-right"><label for="rate">Rate:</label></div>
+                <div class="col-9"><input type="text" name="rate" id="rate" readonly class="form-control" value="$0.70"></div>
+            </div>
+            <div class="row form-group">
                 <div class="col text-center">
-                    <button class="btn btn-primary">Submit</button>
+                    <button id="getRate" type="button" class="btn btn-primary">Get Rate</button>
                 </div>
             </div>
         </form>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="javascripts/getRate.js"></script>
 </body>
 </html>
