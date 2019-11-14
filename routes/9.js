@@ -50,14 +50,12 @@ router.get('/', (req, res) => {
 
 router.get('/getRate', function(req, res, next) {
     q = url.parse(req.url, true).query
-  res.render('9/getRate', {type: mailTypes[Number(q.type)], weight: q.weight, rate: calculateRate(q.weight, q.type).toFixed(2), title: 'Prove 09', brand: 'Prove 09'})
+    res.render('9/getRate', {type: mailTypes[Number(q.type)], weight: q.weight, rate: calculateRate(q.weight, q.type).toFixed(2), title: 'Prove 09', brand: 'Prove 09'})
 });
 
 router.get('/rateData', function(req, res, next) {
     q = url.parse(req.url, true).query
-    res.writeHead(200, {'Content-Type':'application/json'})
-    res.end(JSON.stringify({rate: calculateRate(q.weight, q.type)}))
+    res.send({rate: calculateRate(q.weight, q.type)})
 });
-
 
 module.exports = router;
