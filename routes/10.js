@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/team', (req, res, next) => {
-    res.redirect('/10/team/getPerson?id=1')
+    res.redirect('./getPerson?id=1')
 })
 
 router.get('/team/getPerson', (req, res) => {

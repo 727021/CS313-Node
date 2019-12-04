@@ -1,2 +1,2 @@
 @echo off
-SET DEBUG=09prove:* & npm start
+SET DEBUG=09prove:* & nodemon
